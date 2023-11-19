@@ -3,5 +3,4 @@ Flask
 nltk
 numpy
 spacy
-python==3.12
 
