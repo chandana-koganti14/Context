@@ -1,0 +1,157 @@
+/* static/style.css */
+
+/* Reset some default browser styles */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and text color for the entire page */
+body {
+    background-color: #f4f4f4; /* Light gray background */
+    font-family: Arial, sans-serif;
+    color: #333; /* Text color */
+}
+
+/* Style the header */
+h1 {
+    background-color: #494545; /* Blue background for the header */
+    color: white; /* White text color for the header */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style the form container */
+form {
+    background-color: white; /* White background for the form */
+    padding: 20px;
+    margin: 60px auto;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the select dropdown */
+.select-option {
+    font-size: 18px;
+    padding: 15px;
+    width: 100%;
+}
+
+/* Style the method buttons */
+#method-buttons {
+    display: flex; 
+    flex-direction: row; 
+    margin: 20px 0;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #726fd5; /* Blue background for the button */
+    color: white; /* White text color for the button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 140px;
+    
+    
+}
+
+/* Style the results container */
+#results {
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+#results p {
+    font-size: 21px;
+    margin-top: 10px;
+    line-height: 1.5; /* Adjust the line spacing as needed */
+}
+
+/* Style recognized text */
+.highlight {
+    color: #20c63c; 
+   
+    font-weight: bold;
+}
+/* Style for the Results header */
+#results-header {
+    text-align: right; /* Align the text to the right */
+    padding-right: 800px; /* Add padding to move it to the right */
+    
+}
+/* Style for radio buttons */
+input[type="radio"] {
+    -webkit-appearance: none; /* Remove default styles for WebKit browsers */
+    appearance: none; /* Remove default styles for other browsers */
+    width: 20px; /* Adjust the width */
+    height: 20px; /* Adjust the height */
+    border: 2px solid #007acc; /* Add a border */
+    border-radius: 50%; /* Make them circular */
+    background-color: white; /* Background color */
+    outline: none; /* Remove outline */
+    cursor: pointer; /* Add pointer cursor */
+    margin-right: 10px; 
+}
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-right: 200px; /* Add space between radio button groups */
+}
+
+
+/* Style for radio buttons when checked */
+input[type="radio"]:checked {
+    background-color: #5aabe1; /* Change background color when checked */
+    border: 1px solid #52a6de; /* Change border color when checked */
+    color: white; /* Change text color when checked */
+}
+
+
+/* Style labels for form elements */
+label {
+    font-weight: bold;
+    font-size: large;
+}
+image-style{
+    align-items: left;
+    width: 500px; /* Set maximum width to 100% of its container */
+  height: auto; 
+}
+
+
+.leftpane{
+    width: 25%;
+    min-width: 35px;
+    height: 25px;
+    min-height: 40px;
+    margin-top: 60px;
+    float: left;
+     border-collapse: collapse;
+}
+.middlepane{
+    width: 50%;
+    min-width: 80px;
+    height: available;
+    min-height: 65px;
+    float: left;
+    border-collapse: collapse;
+ }
+ .rightpane{
+    width: 20%;
+    min-width: 35px;
+    height: 25px;
+    min-height: 40px;
+    margin-top: -600px;
+    float: right;
+     border-collapse: collapse;
+    
+}
+/* Additional styles can be added as needed */
+

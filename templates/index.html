@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Named Entity Recognition</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Named Entity Recognition</h1>
+    
+    <div class="leftpane">
+        <img id="spacy-image" src="/static/spp.JPG" style="height: 400px; width: 300px;" class="image-style" alt="Spacy Image">
+        <img id="happy-spacy" src="/static/happyface.jpg" style="display: none; height: 400px; width: 300px;" alt="Happy Spacy Image">
+        <img id="sad-spacy" src="/static/sadface.jpg" style="display: none; height: 400px; width: 300px;" alt="Sad Spacy Image">
+    </div>
+
+    
+
+    <form action="/process" method="POST">
+        <h2><label for="text">Select a text:</label></h2><br>
+        <br>
+        <select id="text" name="text" class="select-option">
+            <option value="" selected disabled>Choose a text</option>
+            <option value="text1">I went to DanLo sir for my doubt clarification.</option>
+            <option value="text2">Lucas and Chloe won the dance competition.</option>
+            <option value="text3">Patrick and Grace are studying hard to get a good score.</option>
+            <option value="text4">Henry and Victoria are planning a cross-country road trip.</option>
+            <option value="text5">Charlotte and Samuel are planning a surprise party for their parents.</option>
+            <option value="text6">Greshmi and James organized a charity event to help the homeless.</option>
+            <option value="text7">We are planning a surprise for Amanda and Christopher.</option>
+        </select>
+
+        <br>
+        <br>
+        <br><br>
+        <div id="method-buttons">
+            <div class="radio-option">
+                <input type="radio" id="spacy" name="method" value="spacy" onclick="checkSelection()">
+                <label for="spacy">Spacy</label>
+            </div>
+            <div class="radio-option">
+                <input type="radio" id="cfg" name="method" value="cfg" onclick="checkSelection()">
+                <label for="cfg">CFG</label>
+            </div>
+        </div>
+        <div id="message" style="color: red; display: none;">Please select a text.</div>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="rightpane">
+        <img id="cfg-image" src="/static/cff.JPG" style="height: 400px; width: 300px; margin-top: 210px; " class="image-style" alt="CFG Image">
+        <img id="happy-cfg" src="/static/happyface.jpg" style="display: none; height: 400px; width: 300px; margin-top: 210px;" alt="Happy CFG Image">
+        <img id="sad-cfg" src="/static/sadface.jpg" style="display: none; height: 400px; width: 300px; margin-top: 210px;" alt="Sad CFG Image">
+    </div>
+
+    <div id="results-header">
+        <h2>Results:</h2>
+    </div>
+    
+    {% if recognized_text %}
+        <div id="results">
+            <h3>Recognized Names:</h3>
+            <p>Recognized Text: {{ recognized_text | safe }}</p>
+        </div>
+    {% endif %}
+
+    <script>
+        $(document).ready(function () {
+            var count = {{ count }};
+            var method = "{{ method }}";
+            
+            // Hide all images by default
+            $("#spacy-image, #cfg-image, #happy-spacy, #happy-cfg, #sad-spacy, #sad-cfg").hide();
+
+            if (count >= 1) {
+                // If names are recognized, show only the happy image of the respective model
+                if (method === "spacy") {
+                    $("#happy-spacy").show();
+                } else if (method === "cfg") {
+                    $("#happy-cfg").show();
+                }
+            } else {
+                // If no names are recognized, show only the sad image of the respective model
+                if (method === "spacy") {
+                    $("#sad-spacy").show();
+                } else if (method === "cfg") {
+                    $("#sad-cfg").show();
+                }
+            }
+        });
+
+        function checkSelection() {
+            var textDropdown = document.getElementById("text");
+            var message = document.getElementById("message");
+            var spacyRadio = document.getElementById("spacy");
+            var cfgRadio = document.getElementById("cfg");
+
+            if (textDropdown.value === "") {
+                message.style.display = "block";
+                spacyRadio.checked = false;
+                cfgRadio.checked = false;
+            } else {
+                message.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
