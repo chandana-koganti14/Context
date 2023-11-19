@@ -58,4 +58,4 @@ def process_text():
     return render_template("index.html", recognized_text=recognized_text, count=count, method=method)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False,host='0.0.0.0')
