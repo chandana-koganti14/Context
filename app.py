@@ -3,6 +3,8 @@ import spacy
 import nltk
 
 from nltk import word_tokenize, pos_tag
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 
 app = Flask(__name__, static_url_path='/static')
 
